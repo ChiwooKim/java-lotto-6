@@ -2,6 +2,8 @@ package lotto.domain;
 
 import static lotto.util.ErrorMessage.*;
 
+import java.util.List;
+
 
 public class BonusNumber {
 
@@ -12,6 +14,10 @@ public class BonusNumber {
     public BonusNumber(int bonusNumber, Lotto winningNumbers) {
         validate(bonusNumber, winningNumbers);
         this.bonusNumber = bonusNumber;
+    }
+
+    public boolean isBonusNumber(List<Integer> numbers) {
+        return numbers.contains(bonusNumber);
     }
 
     private void validate(int number, Lotto winningNumbers) {
