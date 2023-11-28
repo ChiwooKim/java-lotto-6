@@ -43,4 +43,13 @@ class LottoTest {
     void passCase() {
         assertThatCode(() -> new Lotto(List.of(11, 22, 33, 44, 45, 6))).doesNotThrowAnyException();
     }
+
+    @Test
+    @DisplayName("당첨 번호 매칭 확인")
+    void matchNumber() {
+        Lotto purchaseLotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        int number = purchaseLotto.matchWinningNumber(List.of(4, 5, 6, 7, 8, 9));
+
+        assertThat(number).isEqualTo(3);
+    }
 }
