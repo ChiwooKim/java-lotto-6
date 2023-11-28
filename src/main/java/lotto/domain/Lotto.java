@@ -18,6 +18,16 @@ public class Lotto {
         this.numbers = numbers;
     }
 
+    public int matchWinningNumber(List<Integer> winningNumbers) {
+        int match = 0;
+        for (Integer winningNumber : winningNumbers) {
+            if (numbers.contains(winningNumber)) {
+                match++;
+            }
+        }
+        return match;
+    }
+
     private void validate(List<Integer> numbers) {
         validateSize(numbers);
         validateRange(numbers);
