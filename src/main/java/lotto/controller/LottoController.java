@@ -70,7 +70,7 @@ public class LottoController {
         while (true) {
             try {
                 List<Integer> winningNumbers = inputView.readWinningNumbers();
-                return new Lotto(winningNumbers);
+                return Lotto.createLotto(winningNumbers);
             } catch (IllegalArgumentException e) {
                 outputView.printErrorMessage(e);
             }

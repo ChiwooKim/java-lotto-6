@@ -14,7 +14,7 @@ class BonusNumberTest {
 
     @BeforeEach
     void beforeEach() {
-        this.winningNumbers = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        this.winningNumbers = Lotto.createLotto(List.of(1, 2, 3, 4, 5, 6));
     }
 
     @Test

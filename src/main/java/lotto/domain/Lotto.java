@@ -13,9 +13,13 @@ public class Lotto {
     private static final int LOTTO_MAXIMUM_RANGE = 45;
     private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
+    private Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
+    }
+
+    public static Lotto createLotto(List<Integer> numbers) {
+        return new Lotto(numbers);
     }
 
     public int matchWinningNumber(List<Integer> winningNumbers) {

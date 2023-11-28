@@ -20,7 +20,7 @@ public class PurchaseHistory {
 
     private void addLotto(int number) {
         for (int i = 0; i < number; i++) {
-            purchaseHistory.add(new Lotto(RandomNumberGenerator.generateNumbers()));
+            purchaseHistory.add(Lotto.createLotto(RandomNumberGenerator.generateNumbers()));
         }
     }
 }
