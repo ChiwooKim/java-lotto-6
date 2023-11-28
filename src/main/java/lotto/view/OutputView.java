@@ -1,25 +1,26 @@
 package lotto.view;
 
+import java.util.HashMap;
 import java.util.List;
 import lotto.domain.Lotto;
-import lotto.domain.PurchaseHistory;
+import lotto.domain.Rank;
 
 public class OutputView {
 
     public static final String PURCHASE_AMOUNT_INPUT = "구입금액을 입력해 주세요.";
-    public static final String NUMBER_OF_PURCHASE = "개를 구매했습니다.";
-    public static final String WINNING_NUMBERS_INPUT = "당첨 번호를 입력해 주세요.";
-    public static final String BONUS_NUMBER_INPUT = "보너스 번호를 입력해 주세요.";
-    public static final String WINNING_STATISTIC = "당첨 통계";
-    public static final String LINE = "---";
+    public static final String NUMBER_OF_PURCHASE = "%n%d개를 구매했습니다.%n";
+    public static final String WINNING_NUMBERS_INPUT = "%n당첨 번호를 입력해 주세요.%n";
+    public static final String BONUS_NUMBER_INPUT = "%n보너스 번호를 입력해 주세요.%n";
+    public static final String WINNING_STATISTIC = "%n당첨 통계%n---%n";
     public static final String YIELD = "총 수익률은 %s%%입니다.";
+    public static final int NOTHING = 0;
 
     public void printPurchaseAmountInputMessage() {
         System.out.println(PURCHASE_AMOUNT_INPUT);
     }
 
     public void printNumberOfPurchase(int number) {
-        System.out.println(number + NUMBER_OF_PURCHASE);
+        System.out.printf(NUMBER_OF_PURCHASE, number);
     }
 
     public void printPurchaseHistory(List<Lotto> purchaseHistory) {
@@ -29,14 +30,32 @@ public class OutputView {
     }
 
     public void printWinningNumbersInputMessage() {
-        System.out.println(WINNING_NUMBERS_INPUT);
+        System.out.printf(WINNING_NUMBERS_INPUT);
     }
 
     public void printBonusNumberInputMessage() {
-        System.out.println(BONUS_NUMBER_INPUT);
+        System.out.printf(BONUS_NUMBER_INPUT);
+    }
+
+    public void printWinningStatistic(HashMap<Rank, Integer> lottoResult) {
+        System.out.printf(WINNING_STATISTIC);
+        printResult(lottoResult);
+    }
+
+    private void printResult(HashMap<Rank, Integer> lottoResult) {
+        for (Rank rank : Rank.values()) {
+            if (rank == Rank.NONE) {
+                continue;
+            }
+            if (lottoResult.get(rank) != null) {
+                System.out.printf(rank.getMessage(), rank.getWinningAmount(), lottoResult.get(rank));
+                continue;
+            }
+            System.out.printf(String.format(rank.getMessage(), rank.getWinningAmount(), NOTHING));
+        }
     }
 
     public void printErrorMessage(IllegalArgumentException e) {
-        System.out.println(e);
+        System.out.println(e.getMessage());
     }
 }
