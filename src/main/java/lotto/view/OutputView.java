@@ -7,13 +7,13 @@ import lotto.domain.Rank;
 
 public class OutputView {
 
-    public static final String PURCHASE_AMOUNT_INPUT = "구입금액을 입력해 주세요.";
-    public static final String NUMBER_OF_PURCHASE = "%n%d개를 구매했습니다.%n";
-    public static final String WINNING_NUMBERS_INPUT = "%n당첨 번호를 입력해 주세요.%n";
-    public static final String BONUS_NUMBER_INPUT = "%n보너스 번호를 입력해 주세요.%n";
-    public static final String WINNING_STATISTIC = "%n당첨 통계%n---%n";
-    public static final String YIELD = "총 수익률은 %.1f%%입니다.%n";
-    public static final int NOTHING = 0;
+    private static final String PURCHASE_AMOUNT_INPUT = "구입금액을 입력해 주세요.";
+    private static final String NUMBER_OF_PURCHASE = "%n%d개를 구매했습니다.%n";
+    private static final String WINNING_NUMBERS_INPUT = "%n당첨 번호를 입력해 주세요.%n";
+    private static final String BONUS_NUMBER_INPUT = "%n보너스 번호를 입력해 주세요.%n";
+    private static final String WINNING_STATISTIC = "%n당첨 통계%n---%n";
+    private static final String YIELD = "총 수익률은 %.1f%%입니다.%n";
+    private static final int NOTHING = 0;
 
     public void printPurchaseAmountInputMessage() {
         System.out.println(PURCHASE_AMOUNT_INPUT);
