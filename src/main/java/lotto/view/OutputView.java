@@ -35,4 +35,8 @@ public class OutputView {
     public void printBonusNumberInputMessage() {
         System.out.println(BONUS_NUMBER_INPUT);
     }
+
+    public void printErrorMessage(IllegalArgumentException e) {
+        System.out.println(e);
+    }
 }
