@@ -20,11 +20,11 @@ class BonusNumberTest {
     @Test
     @DisplayName("보너스 번호가 로또 숫자 범위를 벗어난 경우")
     void validateRange() {
-        assertThatThrownBy(() -> new BonusNumber(0, winningNumbers))
+        assertThatThrownBy(() -> BonusNumber.createBonusNumber(0, winningNumbers))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(INVALID_OUT_OF_RANGE.getMessage());
 
-        assertThatThrownBy(() -> new BonusNumber(46, winningNumbers))
+        assertThatThrownBy(() -> BonusNumber.createBonusNumber(46, winningNumbers))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(INVALID_OUT_OF_RANGE.getMessage());
     }
@@ -32,7 +32,7 @@ class BonusNumberTest {
     @Test
     @DisplayName("보너스 번호가 당첨 번호와 중복된 경우")
     void validateDuplication() {
-        assertThatThrownBy(() -> new BonusNumber(3, winningNumbers))
+        assertThatThrownBy(() -> BonusNumber.createBonusNumber(3, winningNumbers))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(DUPLICATE_NUMBER.getMessage());
     }
@@ -40,12 +40,12 @@ class BonusNumberTest {
     @Test
     @DisplayName("보너스 번호 존재 여부 확인")
     void isBonusNumber() {
-        BonusNumber bonusNumber1 = new BonusNumber(7, winningNumbers);
+        BonusNumber bonusNumber1 = BonusNumber.createBonusNumber(7, winningNumbers);
         List<Integer> numbers = List.of(1, 2, 3, 4, 5, 7);
 
         assertThat(bonusNumber1.isBonusNumber(numbers)).isTrue();
 
-        BonusNumber bonusNumber2 = new BonusNumber(8, winningNumbers);
+        BonusNumber bonusNumber2 = BonusNumber.createBonusNumber(8, winningNumbers);
         assertThat(bonusNumber2.isBonusNumber(numbers)).isFalse();
     }
 }

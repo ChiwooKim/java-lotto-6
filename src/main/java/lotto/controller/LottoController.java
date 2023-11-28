@@ -82,7 +82,7 @@ public class LottoController {
         while (true) {
             try {
                 Integer bonusNumber = inputView.readBonusNumber();
-                return new BonusNumber(bonusNumber, winningNumbers);
+                return BonusNumber.createBonusNumber(bonusNumber, winningNumbers);
             } catch (IllegalArgumentException e) {
                 outputView.printErrorMessage(e);
             }
