@@ -25,18 +25,32 @@ public class LottoController {
 
     public void draw() {
         PurchaseAmount purchaseAmount = inputPurchaseAmount();
-
-        outputView.printNumberOfPurchase(purchaseAmount.getNumberOfPurchases());
-        PurchaseHistory purchaseHistory =
-                lottoService.purchaseLotto(purchaseAmount.getNumberOfPurchases());
-        outputView.printPurchaseHistory(purchaseHistory.getPurchaseHistory());
-
+        PurchaseHistory purchaseHistory = getPurchaseHistory(purchaseAmount);
         Lotto winningNumbers = inputWinningNumbers();
         BonusNumber bonusNumber = inputBonusNumber(winningNumbers);
+        HashMap<Rank, Integer> result = getLottoResult(purchaseHistory, winningNumbers, bonusNumber);
+        findYield(purchaseAmount, result);
+    }
 
+    private void findYield(PurchaseAmount purchaseAmount, HashMap<Rank, Integer> result) {
+        double yield = lottoService.getYield(purchaseAmount, result);
+        outputView.printYield(yield);
+    }
+
+    private HashMap<Rank, Integer> getLottoResult(PurchaseHistory purchaseHistory,
+                                                  Lotto winningNumbers, BonusNumber bonusNumber) {
         HashMap<Rank, Integer> result = lottoService
                 .checkLottoNumbers(purchaseHistory, winningNumbers, bonusNumber);
         outputView.printWinningStatistic(result);
+        return result;
+    }
+
+    private PurchaseHistory getPurchaseHistory(PurchaseAmount purchaseAmount) {
+        outputView.printNumberOfPurchase(purchaseAmount.getNumberOfPurchases());
+        PurchaseHistory purchaseHistory = lottoService
+                .purchaseLotto(purchaseAmount.getNumberOfPurchases());
+        outputView.printPurchaseHistory(purchaseHistory.getPurchaseHistory());
+        return purchaseHistory;
     }
 
     private PurchaseAmount inputPurchaseAmount() {
