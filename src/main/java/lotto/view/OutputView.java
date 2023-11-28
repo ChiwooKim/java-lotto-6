@@ -1,6 +1,8 @@
 package lotto.view;
 
 import java.util.List;
+import lotto.domain.Lotto;
+import lotto.domain.PurchaseHistory;
 
 public class OutputView {
 
@@ -16,12 +18,14 @@ public class OutputView {
         System.out.println(PURCHASE_AMOUNT_INPUT);
     }
 
-    public void printNumberOfPurchaseMessage(int number) {
+    public void printNumberOfPurchase(int number) {
         System.out.println(number + NUMBER_OF_PURCHASE);
     }
 
-    public void printIssueLottoMessage(List<Integer> numbers) {
-        System.out.println(numbers);
+    public void printPurchaseHistory(List<Lotto> purchaseHistory) {
+        for (Lotto lotto : purchaseHistory) {
+            System.out.println(lotto.getNumbers());
+        }
     }
 
     public void printWinningNumbersInputMessage() {
