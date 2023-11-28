@@ -14,9 +14,13 @@ public class PurchaseAmount {
 
     private final int amount;
 
-    public PurchaseAmount(int amount) {
+    private PurchaseAmount(int amount) {
         validate(amount);
         this.amount = amount;
+    }
+
+    public static PurchaseAmount createPurchaseAmount(int amount) {
+        return new PurchaseAmount(amount);
     }
 
     public Integer getNumberOfPurchases() {

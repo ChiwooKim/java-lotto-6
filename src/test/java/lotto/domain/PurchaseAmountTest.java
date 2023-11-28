@@ -15,10 +15,10 @@ class PurchaseAmountTest {
     @ValueSource(ints = {500, 120000})
     void validateRange(int amount) {
         //정상적인 경우
-        assertThatCode(() -> new PurchaseAmount(10000)).doesNotThrowAnyException();
+        assertThatCode(() -> PurchaseAmount.createPurchaseAmount(10000)).doesNotThrowAnyException();
 
         //에러 발생
-        assertThatThrownBy(() -> new PurchaseAmount(amount))
+        assertThatThrownBy(() -> PurchaseAmount.createPurchaseAmount(amount))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(INVALID_AMOUNT_RANGE.getMessage());
     }
@@ -27,10 +27,10 @@ class PurchaseAmountTest {
     @DisplayName("잔돈이 남는 경우")
     void validateUnit() {
         //정상적인 경우
-        assertThatCode(() -> new PurchaseAmount(10000)).doesNotThrowAnyException();
+        assertThatCode(() -> PurchaseAmount.createPurchaseAmount(10000)).doesNotThrowAnyException();
 
         //에러 발생
-        assertThatThrownBy(() -> new PurchaseAmount(1111))
+        assertThatThrownBy(() -> PurchaseAmount.createPurchaseAmount(1111))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(INVALID_AMOUNT_UNIT.getMessage());
     }
@@ -38,7 +38,7 @@ class PurchaseAmountTest {
     @Test
     @DisplayName("구입 개수 출력 확인")
     void getNumberOfPurchases() {
-        PurchaseAmount purchaseAmount = new PurchaseAmount(10000);
+        PurchaseAmount purchaseAmount = PurchaseAmount.createPurchaseAmount(10000);
 
         assertThat(purchaseAmount.getNumberOfPurchases()).isEqualTo(10);
     }
