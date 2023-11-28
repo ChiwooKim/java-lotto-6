@@ -10,6 +10,7 @@ public class RandomNumberGenerator {
     private static final int PICK_NUMBER = 6;
 
     public static List<Integer> generateNumbers() {
-        return Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, PICK_NUMBER);
+        return Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, PICK_NUMBER)
+                .stream().sorted().toList();
     }
 }
