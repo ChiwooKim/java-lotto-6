@@ -15,6 +15,10 @@ public class PurchaseAmount {
         this.amount = amount;
     }
 
+    public Integer getNumberOfPurchases() {
+        return amount / AMOUNT_UNIT;
+    }
+
     private void validate(int amount) {
         validateAmountRange(amount);
         validateAmountUnit(amount);
