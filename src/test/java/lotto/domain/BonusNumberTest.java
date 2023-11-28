@@ -36,4 +36,16 @@ class BonusNumberTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(DUPLICATE_NUMBER.getMessage());
     }
+
+    @Test
+    @DisplayName("보너스 번호 존재 여부 확인")
+    void isBonusNumber() {
+        BonusNumber bonusNumber1 = new BonusNumber(7, winningNumbers);
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 7);
+
+        assertThat(bonusNumber1.isBonusNumber(numbers)).isTrue();
+
+        BonusNumber bonusNumber2 = new BonusNumber(8, winningNumbers);
+        assertThat(bonusNumber2.isBonusNumber(numbers)).isFalse();
+    }
 }
