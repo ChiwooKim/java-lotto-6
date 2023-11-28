@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import lotto.util.RandomNumberGenerator;
 
@@ -11,6 +12,10 @@ public class PurchaseHistory {
     public PurchaseHistory(int number) {
         this.purchaseHistory = new ArrayList<>();
         addLotto(number);
+    }
+
+    public List<Lotto> getPurchaseHistory() {
+        return Collections.unmodifiableList(purchaseHistory);
     }
 
     private void addLotto(int number) {
