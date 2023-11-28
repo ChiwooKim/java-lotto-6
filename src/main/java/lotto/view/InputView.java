@@ -9,6 +9,8 @@ import java.util.stream.Collectors;
 
 public class InputView {
 
+    private static final String DELIMITER = ",";
+
     public Integer readPurchaseAmount() {
         String amount = input();
         validateDigit(amount);
@@ -17,7 +19,7 @@ public class InputView {
 
     public List<Integer> readWinningNumbers() {
         String winningNumbers = input();
-        return Arrays.stream(winningNumbers.split(","))
+        return Arrays.stream(winningNumbers.split(DELIMITER))
                 .peek(this::validateDigit)
                 .mapToInt(Integer::parseInt)
                 .boxed()
