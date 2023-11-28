@@ -16,19 +16,19 @@ public class OutputView {
         System.out.println(PURCHASE_AMOUNT_INPUT);
     }
 
-    public static void printNumberOfPurchaseMessage(int number) {
+    public void printNumberOfPurchaseMessage(int number) {
         System.out.println(number + NUMBER_OF_PURCHASE);
     }
 
-    public static void printIssueLottoMessage(List<Integer> numbers) {
+    public void printIssueLottoMessage(List<Integer> numbers) {
         System.out.println(numbers);
     }
 
-    public static void printWinningNumbersInputMessage() {
+    public void printWinningNumbersInputMessage() {
         System.out.println(WINNING_NUMBERS_INPUT);
     }
 
-    public static void printBonusNumberInputMessage() {
+    public void printBonusNumberInputMessage() {
         System.out.println(BONUS_NUMBER_INPUT);
     }
 }
