@@ -12,7 +12,7 @@ public class OutputView {
     public static final String WINNING_NUMBERS_INPUT = "%n당첨 번호를 입력해 주세요.%n";
     public static final String BONUS_NUMBER_INPUT = "%n보너스 번호를 입력해 주세요.%n";
     public static final String WINNING_STATISTIC = "%n당첨 통계%n---%n";
-    public static final String YIELD = "총 수익률은 %s%%입니다.";
+    public static final String YIELD = "총 수익률은 %.1f%%입니다.%n";
     public static final int NOTHING = 0;
 
     public void printPurchaseAmountInputMessage() {
@@ -40,6 +40,10 @@ public class OutputView {
     public void printWinningStatistic(HashMap<Rank, Integer> lottoResult) {
         System.out.printf(WINNING_STATISTIC);
         printResult(lottoResult);
+    }
+
+    public void printYield(double yield) {
+        System.out.printf(YIELD, yield);
     }
 
     private void printResult(HashMap<Rank, Integer> lottoResult) {
