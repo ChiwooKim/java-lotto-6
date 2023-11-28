@@ -2,12 +2,16 @@ package lotto.domain;
 
 import static lotto.util.ErrorMessage.*;
 
+import java.util.HashMap;
+
 public class PurchaseAmount {
 
-    public static final int REMAINDER = 0;
-    public static final int AMOUNT_UNIT = 1000;
-    public static final int INPUT_AMOUNT_MIN_LIMIT = 1000;
-    public static final int INPUT_AMOUNT_MAX_LIMIT = 100000;
+    private static final int REMAINDER = 0;
+    private static final int AMOUNT_UNIT = 1000;
+    private static final int INPUT_AMOUNT_MIN_LIMIT = 1000;
+    private static final int INPUT_AMOUNT_MAX_LIMIT = 100000;
+    private static final int CONVERT_PERCENT = 100;
+
     private final int amount;
 
     public PurchaseAmount(int amount) {
@@ -17,6 +21,14 @@ public class PurchaseAmount {
 
     public Integer getNumberOfPurchases() {
         return amount / AMOUNT_UNIT;
+    }
+
+    public double calculateYield(HashMap<Rank, Integer> result) {
+        int totalPrizeMoney = 0;
+        for (Rank rank : result.keySet()) {
+            totalPrizeMoney += rank.getWinningAmount() * result.get(rank);
+        }
+        return  (totalPrizeMoney * CONVERT_PERCENT) / (double) amount;
     }
 
     private void validate(int amount) {
