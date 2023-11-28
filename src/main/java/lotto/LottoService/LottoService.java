@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import lotto.domain.BonusNumber;
 import lotto.domain.Lotto;
+import lotto.domain.PurchaseAmount;
 import lotto.domain.PurchaseHistory;
 import lotto.domain.Rank;
 
@@ -19,6 +20,10 @@ public class LottoService {
 
         List<Rank> matchResult = getRanks(purchaseHistory, winningNumbers, bonusNumber);
         return getResult(matchResult);
+    }
+
+    public double getYield(PurchaseAmount purchaseAmount, HashMap<Rank, Integer> result) {
+        return purchaseAmount.calculateYield(result);
     }
 
     private List<Rank> getRanks(PurchaseHistory purchaseHistory, Lotto winningNumbers, BonusNumber bonusNumber) {
