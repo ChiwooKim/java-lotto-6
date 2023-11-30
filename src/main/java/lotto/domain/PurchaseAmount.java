@@ -28,9 +28,9 @@ public class PurchaseAmount {
     }
 
     public double calculateYield(HashMap<Rank, Integer> result) {
-        int totalPrizeMoney = 0;
+        long totalPrizeMoney = 0;
         for (Rank rank : result.keySet()) {
-            totalPrizeMoney += rank.getWinningAmount() * result.get(rank);
+            totalPrizeMoney += (long) rank.getWinningAmount() * result.get(rank);
         }
         return  (totalPrizeMoney * CONVERT_PERCENT) / (double) amount;
     }
