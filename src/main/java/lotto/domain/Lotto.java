@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class Lotto {
 
-    private static final int Lotto_size = 6;
+    private static final int LOTTO_SIZE = 6;
     private static final int LOTTO_MINIMUM_RANGE = 1;
     private static final int LOTTO_MAXIMUM_RANGE = 45;
     private final List<Integer> numbers;
@@ -39,7 +39,7 @@ public class Lotto {
     }
 
     private void validateSize(List<Integer> numbers) {
-        if (numbers.size() != Lotto_size) {
+        if (numbers.size() != LOTTO_SIZE) {
             throw new IllegalArgumentException(INVALID_LOTTO_SIZE.getMessage());
         }
     }
