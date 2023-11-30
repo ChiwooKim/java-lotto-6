@@ -53,7 +53,7 @@ public class Lotto {
     }
 
     private void validateDuplications(List<Integer> numbers) {
-        if (Set.copyOf(numbers).size() != Lotto_size) {
+        if (Set.copyOf(numbers).size() != LOTTO_SIZE) {
             throw new IllegalArgumentException(DUPLICATE_NUMBER.getMessage());
         }
     }
